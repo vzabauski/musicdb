@@ -45,7 +45,7 @@ namespace WindowsFormsApplication2
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            con = new Database();
+            con = new Database(Settings1.Default.sqlconnect);
             var caseSwitch = comboBox1.Text;
             switch (caseSwitch)
             {

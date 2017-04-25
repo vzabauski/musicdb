@@ -31,7 +31,7 @@ namespace WindowsFormsApplication2
         private void button1_Click(object sender, EventArgs e)
         {
 
-            con = new Database();
+            con = new Database(Settings1.Default.sqlconnect);
             string Query;
             var caseSwitch = comboBox1.Text;
 

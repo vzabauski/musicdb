@@ -38,7 +38,7 @@ namespace WindowsFormsApplication2
         {
             try
             {
-                con = new Database();
+                con = new Database(Settings1.Default.sqlconnect);
                 con.SqlQuery("dbo.add_album");
                 con.Cmd.CommandType = CommandType.StoredProcedure;
                 con.Cmd.Parameters.AddWithValue("@album_title", textBox1.Text.Trim());
@@ -63,6 +63,11 @@ namespace WindowsFormsApplication2
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }

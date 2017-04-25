@@ -48,7 +48,7 @@ namespace WindowsFormsApplication2
         {
             try
             {
-                con = new Database();
+                con = new Database(Settings1.Default.sqlconnect);
                 con.SqlQuery("dbo.add_person");
                 con.Cmd.CommandType = CommandType.StoredProcedure;
                 con.Cmd.Parameters.AddWithValue("@first_name", textBox1.Text.Trim());

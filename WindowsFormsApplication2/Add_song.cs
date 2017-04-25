@@ -43,7 +43,7 @@ namespace WindowsFormsApplication2
         {
             try
             {
-                con = new Database();
+                con = new Database(Settings1.Default.sqlconnect);
                 con.SqlQuery("add_song");
                 con.Cmd.CommandType = CommandType.StoredProcedure;
                 con.Cmd.Parameters.AddWithValue("@song_title", textBox1.Text.Trim());

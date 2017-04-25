@@ -17,35 +17,113 @@ namespace WindowsFormsApplication2
         public SqlDataAdapter Da;
         public DataTable Dt;
 
-        public Database()
+        public Database(string ConnString)
         {
-            _con = new SqlConnection(Settings1.Default.sqlconnect);
-            _con.Open();
+            try
+            {
+                _con = new SqlConnection(ConnString);
+                _con.Open();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message,
+                "Exception",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
+            }
         }
 
         public void SqlQuery(string queryText)
         {
-            Cmd = new SqlCommand(queryText, _con);           
+            try
+            {
+                Cmd = new SqlCommand(queryText, _con);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message,
+                "Exception",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
+            }
         }
 
         public DataTable QueryEx()
         {
-            Da = new SqlDataAdapter(Cmd);
-            Dt = new DataTable();
-            Da.Fill(Dt);
+            try
+            {
+                Da = new SqlDataAdapter(Cmd);
+                Dt = new DataTable();
+                Da.Fill(Dt);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message,
+                "Exception",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
+            }
+
             return Dt;
+           
         }
 
         public DataTable Update()
         {
-            Cmdbuild = new SqlCommandBuilder(Da);
-            Da.Update(Dt);
+            try
+            {
+                Cmdbuild = new SqlCommandBuilder(Da);
+                Da.Update(Dt);
+            }
+            catch (SqlException ex)
+            {
+               MessageBox.Show(ex.Message,
+               "Exception",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Exclamation,
+               MessageBoxDefaultButton.Button1);
+            }
             return Dt;
         }
 
         public void NonQueryEx()
         {
-            Cmd.ExecuteNonQuery();
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+               MessageBox.Show(ex.Message,
+               "Exception",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Exclamation,
+               MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        public string QueryWithResult(string Query)
+        {
+            string Result;
+            using (var con = new SqlConnection(Settings1.Default.sqlconnect))
+            {
+                
+                using (var Cmd = new SqlCommand(Query, con))
+                {
+                    con.Open();
+                    Result = (string) Cmd.ExecuteScalar().ToString();
+                }
+                
+            }
+            return Result;
+        }
+
+        public void Close()
+        {
+            _con.Close();
         }
 
         

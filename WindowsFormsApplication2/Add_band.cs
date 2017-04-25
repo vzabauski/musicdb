@@ -23,7 +23,7 @@ namespace WindowsFormsApplication2
         {
             try
             {
-                con = new Database();
+                con = new Database(Settings1.Default.sqlconnect);
                 con.SqlQuery("dbo.add_band");
                 con.Cmd.CommandType = CommandType.StoredProcedure;
                 con.Cmd.Parameters.AddWithValue("@band_name", textBox1.Text.Trim());

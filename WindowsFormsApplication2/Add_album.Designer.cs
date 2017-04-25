@@ -80,6 +80,7 @@
             this.textBox1.Size = new System.Drawing.Size(402, 22);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "Album title";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             this.textBox1.DoubleClick += new System.EventHandler(this.textBox1_DoubleClick);
             // 
             // Add_album

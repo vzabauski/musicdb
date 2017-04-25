@@ -93,6 +93,12 @@
     <Compile Include="Add_song.Designer.cs">
       <DependentUpon>Add_song.cs</DependentUpon>
     </Compile>
+    <Compile Include="Auth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auth.Designer.cs">
+      <DependentUpon>Auth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Main windows.cs">
       <SubType>Form</SubType>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add_song.resx">
       <DependentUpon>Add_song.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Auth.resx">
+      <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main windows.resx">
       <DependentUpon>Main windows.cs</DependentUpon>
