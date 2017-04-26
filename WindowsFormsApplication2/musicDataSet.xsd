@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="musicConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="musicConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApplication2.Properties.Settings.GlobalReference.Default.musicConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="musicConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="musicConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MusicCatalogue.Properties.Settings.GlobalReference.Default.musicConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="artistsTableAdapter" GeneratorDataComponentClassName="artistsTableAdapter" Name="artists" UserDataComponentName="artistsTableAdapter">
@@ -125,7 +125,7 @@
   <xs:element name="musicDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="musicDataSet" msprop:Generator_UserDSName="musicDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="artists" msprop:Generator_TableClassName="artistsDataTable" msprop:Generator_TableVarName="tableartists" msprop:Generator_TablePropName="artists" msprop:Generator_RowDeletingName="artistsRowDeleting" msprop:Generator_RowChangingName="artistsRowChanging" msprop:Generator_RowEvHandlerName="artistsRowChangeEventHandler" msprop:Generator_RowDeletedName="artistsRowDeleted" msprop:Generator_UserTableName="artists" msprop:Generator_RowChangedName="artistsRowChanged" msprop:Generator_RowEvArgName="artistsRowChangeEvent" msprop:Generator_RowClassName="artistsRow">
+        <xs:element name="artists" msprop:Generator_TableClassName="artistsDataTable" msprop:Generator_TableVarName="tableartists" msprop:Generator_RowChangedName="artistsRowChanged" msprop:Generator_TablePropName="artists" msprop:Generator_RowDeletingName="artistsRowDeleting" msprop:Generator_RowChangingName="artistsRowChanging" msprop:Generator_RowEvHandlerName="artistsRowChangeEventHandler" msprop:Generator_RowDeletedName="artistsRowDeleted" msprop:Generator_RowClassName="artistsRow" msprop:Generator_UserTableName="artists" msprop:Generator_RowEvArgName="artistsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="artist_name" msprop:Generator_ColumnVarNameInTable="columnartist_name" msprop:Generator_ColumnPropNameInRow="artist_name" msprop:Generator_ColumnPropNameInTable="artist_nameColumn" msprop:Generator_UserColumnName="artist_name">
@@ -145,7 +145,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="albums" msprop:Generator_TableClassName="albumsDataTable" msprop:Generator_TableVarName="tablealbums" msprop:Generator_RowChangedName="albumsRowChanged" msprop:Generator_TablePropName="albums" msprop:Generator_RowDeletingName="albumsRowDeleting" msprop:Generator_RowChangingName="albumsRowChanging" msprop:Generator_RowEvHandlerName="albumsRowChangeEventHandler" msprop:Generator_RowDeletedName="albumsRowDeleted" msprop:Generator_RowClassName="albumsRow" msprop:Generator_UserTableName="albums" msprop:Generator_RowEvArgName="albumsRowChangeEvent">
+        <xs:element name="albums" msprop:Generator_TableClassName="albumsDataTable" msprop:Generator_TableVarName="tablealbums" msprop:Generator_TablePropName="albums" msprop:Generator_RowDeletingName="albumsRowDeleting" msprop:Generator_RowChangingName="albumsRowChanging" msprop:Generator_RowEvHandlerName="albumsRowChangeEventHandler" msprop:Generator_RowDeletedName="albumsRowDeleted" msprop:Generator_UserTableName="albums" msprop:Generator_RowChangedName="albumsRowChanged" msprop:Generator_RowEvArgName="albumsRowChangeEvent" msprop:Generator_RowClassName="albumsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="album_name" msprop:Generator_ColumnVarNameInTable="columnalbum_name" msprop:Generator_ColumnPropNameInRow="album_name" msprop:Generator_ColumnPropNameInTable="album_nameColumn" msprop:Generator_UserColumnName="album_name">
@@ -166,7 +166,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="genres" msprop:Generator_TableClassName="genresDataTable" msprop:Generator_TableVarName="tablegenres" msprop:Generator_RowChangedName="genresRowChanged" msprop:Generator_TablePropName="genres" msprop:Generator_RowDeletingName="genresRowDeleting" msprop:Generator_RowChangingName="genresRowChanging" msprop:Generator_RowEvHandlerName="genresRowChangeEventHandler" msprop:Generator_RowDeletedName="genresRowDeleted" msprop:Generator_RowClassName="genresRow" msprop:Generator_UserTableName="genres" msprop:Generator_RowEvArgName="genresRowChangeEvent">
+        <xs:element name="genres" msprop:Generator_TableClassName="genresDataTable" msprop:Generator_TableVarName="tablegenres" msprop:Generator_TablePropName="genres" msprop:Generator_RowDeletingName="genresRowDeleting" msprop:Generator_RowChangingName="genresRowChanging" msprop:Generator_RowEvHandlerName="genresRowChangeEventHandler" msprop:Generator_RowDeletedName="genresRowDeleted" msprop:Generator_UserTableName="genres" msprop:Generator_RowChangedName="genresRowChanged" msprop:Generator_RowEvArgName="genresRowChangeEvent" msprop:Generator_RowClassName="genresRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="genre" msprop:Generator_ColumnVarNameInTable="columngenre" msprop:Generator_ColumnPropNameInRow="genre" msprop:Generator_ColumnPropNameInTable="genreColumn" msprop:Generator_UserColumnName="genre">
@@ -179,7 +179,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="songs" msprop:Generator_TableClassName="songsDataTable" msprop:Generator_TableVarName="tablesongs" msprop:Generator_RowChangedName="songsRowChanged" msprop:Generator_TablePropName="songs" msprop:Generator_RowDeletingName="songsRowDeleting" msprop:Generator_RowChangingName="songsRowChanging" msprop:Generator_RowEvHandlerName="songsRowChangeEventHandler" msprop:Generator_RowDeletedName="songsRowDeleted" msprop:Generator_RowClassName="songsRow" msprop:Generator_UserTableName="songs" msprop:Generator_RowEvArgName="songsRowChangeEvent">
+        <xs:element name="songs" msprop:Generator_TableClassName="songsDataTable" msprop:Generator_TableVarName="tablesongs" msprop:Generator_TablePropName="songs" msprop:Generator_RowDeletingName="songsRowDeleting" msprop:Generator_RowChangingName="songsRowChanging" msprop:Generator_RowEvHandlerName="songsRowChangeEventHandler" msprop:Generator_RowDeletedName="songsRowDeleted" msprop:Generator_UserTableName="songs" msprop:Generator_RowChangedName="songsRowChanged" msprop:Generator_RowEvArgName="songsRowChangeEvent" msprop:Generator_RowClassName="songsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">

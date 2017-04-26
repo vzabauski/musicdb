@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2
+﻿namespace MusicCatalogue
 {
     partial class Add_album
     {

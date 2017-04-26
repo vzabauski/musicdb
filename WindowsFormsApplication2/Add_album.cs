@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace WindowsFormsApplication2
+namespace MusicCatalogue
 {
     public partial class Add_album : Form
     {

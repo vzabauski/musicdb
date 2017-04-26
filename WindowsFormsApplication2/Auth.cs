@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication2
+namespace MusicCatalogue
 {
     public partial class Auth : Form
     {
@@ -39,14 +39,18 @@ namespace WindowsFormsApplication2
             {
                 con = new Database(Settings1.Default.sqlconnect);
                 string Query = String.Format("SELECT COUNT (*) FROM[music].[sys].[database_principals] WHERE name = '{0}'", textBox1.Text);
-                //MessageBox.Show(con.QueryWithResult(Query));
+                
                 if (con.QueryWithResult(Query) == "1")
                 {
-                    MessageBox.Show(con.QueryWithResult(Query));
+                    //MessageBox.Show(con.QueryWithResult(Query));
+                    this.Hide();
+                    var form1 = new Form1();
+                    form1.Closed += (s, args) => this.Close();
+                    form1.Show();
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Invalid login or/and password!", "Try again?", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Invalid login and/or password!", "Try again?", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.No)
                     {
                         Close();
@@ -57,12 +61,18 @@ namespace WindowsFormsApplication2
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-               "Exception",
-               MessageBoxButtons.OK,
-               MessageBoxIcon.Error,
+                MessageBox.Show(ex.Message, "Exception",
+               MessageBoxButtons.OK, MessageBoxIcon.Error,
                MessageBoxDefaultButton.Button1);
             }
+        }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBox1.Text != "^[A-z]*\\d*$")
+                e.Cancel = true;
+                MessageBox.Show("Only letters and digits are allowed.", 
+                "Invalid login format!", MessageBoxButtons.OK,MessageBoxIcon.Warning);
         }
     }
 }

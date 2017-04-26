@@ -3,12 +3,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication2
+namespace MusicCatalogue
 {
-    public partial class Form2 : Form
+    public partial class EditDatabase : Form
     {
         private Database con;
-        public Form2()
+        public EditDatabase()
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;

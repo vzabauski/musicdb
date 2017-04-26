@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2
+﻿namespace MusicCatalogue
 {
     partial class Form1
     {
@@ -36,7 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.musicDataSet = new WindowsFormsApplication2.musicDataSet();
+            this.musicDataSet = new MusicCatalogue.musicDataSet();
             this.musicDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();

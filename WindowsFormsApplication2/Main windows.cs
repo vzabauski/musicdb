@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 
 
-namespace WindowsFormsApplication2
+namespace MusicCatalogue
 {
     public partial class Form1 : Form
     {
@@ -29,7 +29,7 @@ namespace WindowsFormsApplication2
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            var inputForm = new Form2();
+            var inputForm = new EditDatabase();
             inputForm.ShowDialog();
         }
 

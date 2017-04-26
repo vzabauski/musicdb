@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication2
+namespace MusicCatalogue
 {
 
     public partial class Search : Form

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication2 {
+namespace MusicCatalogue {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

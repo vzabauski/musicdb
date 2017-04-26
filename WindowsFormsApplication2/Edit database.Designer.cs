@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApplication2
+﻿namespace MusicCatalogue
 {
-    partial class Form2
+    partial class EditDatabase
     {
         /// <summary>
         /// Required designer variable.

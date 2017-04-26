@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2 {
+﻿namespace MusicCatalogue {
     
     
     // This class allows you to handle specific events on the settings class:
