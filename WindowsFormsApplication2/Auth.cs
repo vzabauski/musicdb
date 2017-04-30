@@ -38,11 +38,17 @@ namespace MusicCatalogue
             try
             {
                 con = new Database(Settings1.Default.sqlconnect);
-                string Query = String.Format("SELECT COUNT (*) FROM[music].[sys].[database_principals] WHERE name = '{0}'", textBox1.Text);
-                
-                if (con.QueryWithResult(Query) == "1")
+                string Query = String.Format("USE music; DECLARE @responseMessage NVARCHAR(250); EXEC login @pLoginName='{0}', @pPassword='{1}', @responseMessage=@responseMessage OUTPUT; SELECT @responseMessage as N'@responseMessage'", textBox1.Text, textBox2.Text);
+                //con.SqlQuery("DECLARE @responseMessage NVARCHAR(250); EXEC [dbo].Login @pLoginName='admin', @pPassword='Password@123', @responseMessage=@responseMessage OUTPUT; SELECT @responseMessage as N'@responseMessage'");
+                //con.Cmd.CommandType = CommandType.StoredProcedure;
+                //con.Cmd.Parameters.AddWithValue("@pLoginName", textBox1.Text.Trim());
+                //con.Cmd.Parameters.AddWithValue("@pPassword", textBox2.Text.Trim());
+                //con.QueryWithResult(Query);
+                var Response = con.QueryWithResult(Query);
+
+                if (Response == "Success")
                 {
-                    //MessageBox.Show(con.QueryWithResult(Query));
+                    MessageBox.Show("Succesfully logged in");
                     this.Hide();
                     var form1 = new Form1();
                     form1.Closed += (s, args) => this.Close();
@@ -50,14 +56,14 @@ namespace MusicCatalogue
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Invalid login and/or password!", "Try again?", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show(Response, "Try again?", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.No)
                     {
                         Close();
                     }
                 }
                 //con.Close();
-
+                
             }
             catch (Exception ex)
             {
