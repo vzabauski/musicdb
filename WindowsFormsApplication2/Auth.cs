@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace MusicCatalogue
 {
@@ -45,8 +46,8 @@ namespace MusicCatalogue
                 //con.Cmd.Parameters.AddWithValue("@pPassword", textBox2.Text.Trim());
                 //con.QueryWithResult(Query);
                 var Response = con.QueryWithResult(Query);
-
-                if (Response == "Success")
+                Regex rgx = new Regex("^[1 - 9].*$");
+                if (rgx.IsMatch(Response))
                 {
                     MessageBox.Show("Succesfully logged in");
                     this.Hide();
