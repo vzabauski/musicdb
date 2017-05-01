@@ -112,6 +112,12 @@ namespace MusicCatalogue
             var inputForm = new Search();
             inputForm.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var inputForm = new MusicCatalogue.AdminConsole();
+            inputForm.ShowDialog();
+        }
     }
 }
 
