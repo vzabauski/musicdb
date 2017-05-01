@@ -68,7 +68,7 @@ namespace MusicCatalogue
             }
 
             return Dt;
-           
+
         }
 
         public DataTable Update()
@@ -80,11 +80,11 @@ namespace MusicCatalogue
             }
             catch (SqlException ex)
             {
-               MessageBox.Show(ex.Message,
-               "Exception",
-               MessageBoxButtons.OK,
-               MessageBoxIcon.Exclamation,
-               MessageBoxDefaultButton.Button1);
+                MessageBox.Show(ex.Message,
+                "Exception",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
             }
             return Dt;
         }
@@ -97,11 +97,11 @@ namespace MusicCatalogue
             }
             catch (SqlException ex)
             {
-               MessageBox.Show(ex.Message,
-               "Exception",
-               MessageBoxButtons.OK,
-               MessageBoxIcon.Exclamation,
-               MessageBoxDefaultButton.Button1);
+                MessageBox.Show(ex.Message,
+                "Exception",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -110,16 +110,36 @@ namespace MusicCatalogue
             string Result;
             using (var con = new SqlConnection(Settings1.Default.sqlconnect))
             {
-                
+
                 using (var Cmd = new SqlCommand(Query, con))
                 {
                     con.Open();
-                    Result = (string) Cmd.ExecuteScalar().ToString();
+                    Result = (string)Cmd.ExecuteScalar().ToString();
                 }
-                
+
             }
             return Result;
         }
+
+        public Array ReturnArray(string Query, string Pattern)
+            {
+            var listOfStrings = new List<string>();
+            using (SqlConnection sqlConnection = new SqlConnection(Settings1.Default.sqlconnect))
+                {
+                SqlCommand sqlCmd = new SqlCommand(Query, sqlConnection);
+                sqlConnection.Open();
+                SqlDataReader sqlReader = sqlCmd.ExecuteReader();
+                
+
+                while (sqlReader.Read())
+                {
+                    listOfStrings.Add(sqlReader[Pattern].ToString());
+                }
+                string[] arrayOfStrings = listOfStrings.ToArray();
+                sqlReader.Close();
+                return arrayOfStrings;
+                }
+            }
 
         public void Close()
         {

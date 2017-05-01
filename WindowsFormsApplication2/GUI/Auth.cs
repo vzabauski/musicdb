@@ -60,7 +60,7 @@ namespace MusicCatalogue
                     if (Response == "1")
                     {
                         Globals.AdminMode = true;
-                        MessageBox.Show("Logged with administrative privileges");
+                        MessageBox.Show("Logged with administrative privileges", "Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -73,10 +73,15 @@ namespace MusicCatalogue
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show(Response, "Try again?", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show(Response, "Try again?", MessageBoxButtons.YesNo,MessageBoxIcon.Error);
                     if (dialogResult == DialogResult.No)
                     {
                         Close();
+                    }
+                    else
+                    {
+                        textBox1.Text = String.Empty;
+                        textBox2.Text = String.Empty;
                     }
                 }
                 //con.Close();

@@ -158,6 +158,9 @@
     <EmbeddedResource Include="GUI\Add_song.resx">
       <DependentUpon>Add_song.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AdminConsole.resx">
+      <DependentUpon>AdminConsole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
