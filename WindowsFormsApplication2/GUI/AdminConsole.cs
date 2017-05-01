@@ -113,22 +113,16 @@ namespace MusicCatalogue
                 case 0:
                     if (listBox1.Text != String.Empty)
                     {
-                        if (textBox1.Text == textBox2.Text)
+                        if (textBox1.Text == "" && textBox2.Text == "")
+                        {
+                            MessageBox.Show("Password fields shouldn't be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (textBox1.Text == textBox2.Text)
                         {
                             Query = String.Format("USE music; DECLARE @responseMessage NVARCHAR(250);" +
                             "EXEC [dbo].change_password @pLogin='{0}', @pPassword='{1}', @responseMessage=@responseMessage OUTPUT;" +
                             "SELECT @responseMessage as N'@responseMessage'", listBox1.Text, textBox1.Text);
-                            try
-                            {
-                                string Response = con.QueryWithResult(Query);
-                                MessageBox.Show(Response, "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-
-                            }
-                            catch (SqlException ex)
-                            {
-                                MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            RunQuery(Query);
 
                         }
                         else
