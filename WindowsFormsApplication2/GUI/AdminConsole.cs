@@ -171,5 +171,14 @@ namespace MusicCatalogue
             Query = "DECLARE @responseMessage NVARCHAR(250);EXEC GET_BACKUP 'C:\\Backups\\', @responseMessage=@responseMessage OUTPUT; SELECT @responseMessage as N'@responseMessage'";
             RunQuery(Query);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Query = "DECLARE @responseMessage NVARCHAR(250);" +
+                "EXEC RESTORE_BACKUP 'C:\\Backups\\', @responseMessage=@responseMessage OUTPUT;" +
+                "SELECT @responseMessage as N'@responseMessage'";
+            RunQuery(Query);
+            RefreshUserList();
+        }
     }
 }
