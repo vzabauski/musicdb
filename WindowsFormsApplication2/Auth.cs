@@ -14,6 +14,7 @@ namespace MusicCatalogue
     public partial class Auth : Form
     {
         private Database con;
+        public bool admin = false;
         public Auth()
         {
             InitializeComponent();
@@ -39,17 +40,26 @@ namespace MusicCatalogue
             try
             {
                 con = new Database(Settings1.Default.sqlconnect);
-                string Query = String.Format("USE music; DECLARE @responseMessage NVARCHAR(250); EXEC login @pLoginName='{0}', @pPassword='{1}', @responseMessage=@responseMessage OUTPUT; SELECT @responseMessage as N'@responseMessage'", textBox1.Text, textBox2.Text);
-                //con.SqlQuery("DECLARE @responseMessage NVARCHAR(250); EXEC [dbo].Login @pLoginName='admin', @pPassword='Password@123', @responseMessage=@responseMessage OUTPUT; SELECT @responseMessage as N'@responseMessage'");
-                //con.Cmd.CommandType = CommandType.StoredProcedure;
-                //con.Cmd.Parameters.AddWithValue("@pLoginName", textBox1.Text.Trim());
-                //con.Cmd.Parameters.AddWithValue("@pPassword", textBox2.Text.Trim());
-                //con.QueryWithResult(Query);
+                string Query = String.Format("USE music; DECLARE @Response NVARCHAR(250);" +
+                    "EXEC login @pLoginName='{0}', @pPassword='{1}', @Response=@Response OUTPUT;" +
+                    " SELECT @Response as N'@Response'", textBox1.Text, textBox2.Text);
                 var Response = con.QueryWithResult(Query);
                 Regex rgx = new Regex("^[1 - 9].*$");
                 if (rgx.IsMatch(Response))
                 {
-                    MessageBox.Show("Succesfully logged in");
+                    Query = String.Format("USE music; DECLARE @Response NVARCHAR(10); " +
+                        "EXEC is_admin @pLogin='{0}', @Response=@Response OUTPUT; " +
+                        "SELECT @Response as N'@Response'", textBox1.Text);
+                    Response = con.QueryWithResult(Query);
+                    if (Response == "1")
+                    {
+                        admin = true;
+                        MessageBox.Show("Logged with administrative privileges");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Succesfully logged in");
+                    }
                     this.Hide();
                     var form1 = new Form1();
                     form1.Closed += (s, args) => this.Close();
