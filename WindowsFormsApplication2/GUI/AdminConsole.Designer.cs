@@ -102,7 +102,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(174, 43);
+            this.comboBox1.Location = new System.Drawing.Point(181, 43);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(163, 24);
             this.comboBox1.TabIndex = 5;
@@ -134,7 +134,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(171, 23);
+            this.label2.Location = new System.Drawing.Point(178, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 17);
             this.label2.TabIndex = 8;
@@ -142,12 +142,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(343, 37);
+            this.button4.Location = new System.Drawing.Point(363, 37);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 38);
+            this.button4.Size = new System.Drawing.Size(101, 38);
             this.button4.TabIndex = 9;
             this.button4.Text = "Run";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // textBox1
             // 
