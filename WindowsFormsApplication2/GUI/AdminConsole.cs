@@ -35,7 +35,7 @@ namespace MusicCatalogue
             try
             {
                 string Response = con.QueryWithResult(Query);
-                MessageBox.Show(Response, "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(Response, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException ex)
             {
@@ -164,6 +164,12 @@ namespace MusicCatalogue
 
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Query = "DECLARE @responseMessage NVARCHAR(250);EXEC GET_BACKUP 'C:\\Backups\\', @responseMessage=@responseMessage OUTPUT; SELECT @responseMessage as N'@responseMessage'";
+            RunQuery(Query);
         }
     }
 }
