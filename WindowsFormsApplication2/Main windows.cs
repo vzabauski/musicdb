@@ -21,7 +21,14 @@ namespace MusicCatalogue
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
+            
+            if (Globals.AdminMode == false )
+            {
+                button5.Visible = false;
+            }
         }
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

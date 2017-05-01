@@ -11,13 +11,19 @@ using System.Text.RegularExpressions;
 
 namespace MusicCatalogue
 {
+    
     public partial class Auth : Form
     {
         private Database con;
-        public bool admin = false;
+        
         public Auth()
         {
             InitializeComponent();
+        }
+
+        public interface IForm
+        {
+            bool GetResult();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -44,7 +50,7 @@ namespace MusicCatalogue
                     "EXEC login @pLoginName='{0}', @pPassword='{1}', @Response=@Response OUTPUT;" +
                     " SELECT @Response as N'@Response'", textBox1.Text, textBox2.Text);
                 var Response = con.QueryWithResult(Query);
-                Regex rgx = new Regex("^[1 - 9].*$");
+                Regex rgx = new Regex("^[1-9].*$");
                 if (rgx.IsMatch(Response))
                 {
                     Query = String.Format("USE music; DECLARE @Response NVARCHAR(10); " +
@@ -53,7 +59,7 @@ namespace MusicCatalogue
                     Response = con.QueryWithResult(Query);
                     if (Response == "1")
                     {
-                        admin = true;
+                        Globals.AdminMode = true;
                         MessageBox.Show("Logged with administrative privileges");
                     }
                     else
