@@ -157,7 +157,6 @@
             this.textBox1.Size = new System.Drawing.Size(174, 22);
             this.textBox1.TabIndex = 10;
             this.textBox1.UseSystemPasswordChar = true;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
