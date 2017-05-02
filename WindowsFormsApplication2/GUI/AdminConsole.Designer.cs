@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.users = new MusicCatalogue.users();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new MusicCatalogue.usersTableAdapters.usersTableAdapter();
-            this.tableAdapterManager = new MusicCatalogue.usersTableAdapters.TableAdapterManager();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -46,29 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.users)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // users
-            // 
-            this.users.DataSetName = "users";
-            this.users.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.users;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.UpdateOrder = MusicCatalogue.usersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.usersTableAdapter = this.usersTableAdapter;
             // 
             // button1
             // 
@@ -206,8 +181,6 @@
             this.Name = "AdminConsole";
             this.Text = "AdminConsole";
             this.Load += new System.EventHandler(this.AdminConsole_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.users)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,10 +188,8 @@
 
         #endregion
 
-        private users users;
+        
         private System.Windows.Forms.BindingSource usersBindingSource;
-        private usersTableAdapters.usersTableAdapter usersTableAdapter;
-        private usersTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

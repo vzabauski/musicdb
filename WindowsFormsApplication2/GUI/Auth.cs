@@ -53,6 +53,7 @@ namespace MusicCatalogue
                 Regex rgx = new Regex("^[1-9].*$");
                 if (rgx.IsMatch(Response))
                 {
+                    Globals.UserID = Response;
                     Query = String.Format("USE music; DECLARE @Response NVARCHAR(10); " +
                         "EXEC is_admin @pLogin='{0}', @Response=@Response OUTPUT; " +
                         "SELECT @Response as N'@Response'", textBox1.Text);
@@ -60,11 +61,11 @@ namespace MusicCatalogue
                     if (Response == "1")
                     {
                         Globals.AdminMode = true;
-                        MessageBox.Show("Logged with administrative privileges", "Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("Logged with administrative privileges." + "UserID="+ Globals.UserID, "Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Succesfully logged in");
+                        MessageBox.Show("Succesfully logged in." + "UserID="+ Globals.UserID);
                     }
                     this.Hide();
                     var form1 = new Form1();

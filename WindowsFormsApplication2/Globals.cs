@@ -33,6 +33,20 @@ namespace MusicCatalogue
             }
         }
 
+        static string _userid;
+
+        public static string UserID
+        {
+            get
+            {
+                return _userid;
+            }
+            set
+            {
+                _userid = value;
+            }
+        }
+
         /// <summary>
         /// Global static field.
         /// </summary>

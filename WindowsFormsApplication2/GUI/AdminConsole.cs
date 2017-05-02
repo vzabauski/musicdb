@@ -27,7 +27,6 @@ namespace MusicCatalogue
                 listBox1.Items.Add(item);
 
             }
-            listBox1.SelectedIndex = 0;
         }
 
         public void RunQuery(string Query)
@@ -61,7 +60,6 @@ namespace MusicCatalogue
         private void AdminConsole_Load(object sender, EventArgs e)
         {
             
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -69,16 +67,12 @@ namespace MusicCatalogue
             Close();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
+                    listBox1.SelectedIndex = 0;
                     label3.Visible = true;
                     label3.Text = "Enter new password";
                     label4.Visible = true;
@@ -87,6 +81,7 @@ namespace MusicCatalogue
                     textBox2.Visible = true;
                     break;
                 case 1:
+                    listBox1.SelectedIndex = 0;
                     label3.Visible = false;
                     label4.Visible = false;
                     textBox1.Visible = false;
@@ -160,8 +155,6 @@ namespace MusicCatalogue
                         textBox1.Text = String.Empty;
                         textBox2.Text = String.Empty;
                     break;
-
-
             }
 
         }

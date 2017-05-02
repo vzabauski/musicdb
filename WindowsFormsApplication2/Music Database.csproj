@@ -141,11 +141,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
-    <Compile Include="users.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>users.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="GUI\Add_album.resx">
       <DependentUpon>Add_album.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,17 +203,6 @@
     <None Include="Settings1.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="users.xsc">
-      <DependentUpon>users.xsd</DependentUpon>
-    </None>
-    <None Include="users.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>users.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="users.xss">
-      <DependentUpon>users.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

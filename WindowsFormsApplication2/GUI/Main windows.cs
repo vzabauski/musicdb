@@ -17,6 +17,7 @@ namespace MusicCatalogue
     public partial class Form1 : Form
     {
         private Database con;
+        public string Query;
         public Form1()
         {
             InitializeComponent();
@@ -57,19 +58,23 @@ namespace MusicCatalogue
             switch (caseSwitch)
             {
                 case "Artists":
-                    con.SqlQuery("select * from [music].[dbo].[artists_view]");
+                    Query = String.Format("USE music; EXEC get_artists_view @pUserID='{0}'", Globals.UserID);
+                    con.SqlQuery(Query);
                     break;
                 case "Albums":
-                    con.SqlQuery("select * from [music].[dbo].[albums_view]");
+                    Query = String.Format("USE music; EXEC get_albums_view @pUserID='{0}'", Globals.UserID);
+                    con.SqlQuery(Query);
                     break;
                 case "Genres":
                     con.SqlQuery("select * from [music].[dbo].[genres_view]");
                     break;
                 case "Songs":
-                    con.SqlQuery("select * from [music].[dbo].[songs_view]");
+                    Query = String.Format("USE music; EXEC get_songs_view @pUserID = '{0}'", Globals.UserID);
+                    con.SqlQuery(Query);
                     break;
                 default:
-                    con.SqlQuery("select * from [music].[dbo].[artists_view]");
+                    Query = String.Format("USE music; EXEC get_artists_view @pUserID='{0}'", Globals.UserID);
+                    con.SqlQuery(Query);
                     break;
             }
 
