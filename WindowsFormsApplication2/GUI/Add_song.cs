@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace MusicCatalogue
 {
     public partial class Add_song : Form
     {
         private Database con;
+        public string Query;
+        public DateTime duration;
+        public string SongDuration;
         public Add_song()
         {
             InitializeComponent();
@@ -43,14 +47,22 @@ namespace MusicCatalogue
         {
             try
             {
+                if (textBox2.Text == "Song duration" || textBox2.Text==String.Empty)
+                {
+                    SongDuration = String.Empty;
+                }
+                else
+                {
+                    DateTime duration = DateTime.ParseExact(textBox2.Text.Trim(), "HH:mm:ss",
+                                        CultureInfo.InvariantCulture);
+                    SongDuration = duration.TimeOfDay.ToString();
+                }
                 con = new Database(Settings1.Default.sqlconnect);
-                con.SqlQuery("add_song");
-                con.Cmd.CommandType = CommandType.StoredProcedure;
-                con.Cmd.Parameters.AddWithValue("@song_title", textBox1.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@song_duration", textBox2.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@album_title", textBox3.Text.Trim());
-                con.NonQueryEx();
-                MessageBox.Show("Success!");
+                Query = String.Format("USE music; DECLARE @Response NVARCHAR(250);" +
+                    "EXEC dbo.add_song @song_title='{0}', @song_duration='{1}', @album_title='{2}', @pUserID={3},@Response=@Response OUTPUT;" +
+                    "SELECT @Response as N'@Response'", textBox1.Text.Trim(), SongDuration, textBox3.Text.Trim(), Globals.UserID);
+                string Response = con.QueryWithResult(Query);
+                MessageBox.Show(Response);
                 textBox1.Text = String.Empty;
                 textBox2.Text = String.Empty;
                 textBox3.Text = String.Empty;
