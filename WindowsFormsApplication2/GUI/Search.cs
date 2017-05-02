@@ -43,19 +43,19 @@ namespace MusicCatalogue
                 switch (caseSwitch)
                 {
                     case "Band":
-                        Query = String.Format("SELECT * FROM [music].[dbo].[search_artists]('{0}')", name);
+                        Query = String.Format("SELECT * FROM [music].[dbo].[search_artists]('{0}','{1}')", name, Globals.UserID);
                         con.SqlQuery(Query);
                         break;
                     case "Person":
-                        Query = String.Format("SELECT * FROM [music].[dbo].[search_persons]('{0}')", name);
+                        Query = String.Format("SELECT * FROM [music].[dbo].[search_persons]('{0}','{1}')", name, Globals.UserID);
                         con.SqlQuery(Query);
                         break;
                     case "Album":
-                        Query = String.Format("SELECT * FROM [music].[dbo].[search_albums]('{0}')", name);
+                        Query = String.Format("SELECT * FROM [music].[dbo].[search_albums]('{0}', '{1}')", name, Globals.UserID);
                         con.SqlQuery(Query);
                         break;
                     case "Song":
-                        Query = String.Format("SELECT * FROM [music].[dbo].[search_songs]('{0}')", name);
+                        Query = String.Format("SELECT * FROM [music].[dbo].[search_songs]('{0}', '{1}')", name, Globals.UserID);
                         con.SqlQuery(Query);
                         break;
                     default:
