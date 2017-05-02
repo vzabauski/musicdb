@@ -14,6 +14,7 @@ namespace MusicCatalogue
     public partial class Add_person : Form
     {
         private Database con;
+        public string Query;
         public Add_person()
         {
             InitializeComponent();
@@ -49,14 +50,11 @@ namespace MusicCatalogue
             try
             {
                 con = new Database(Settings1.Default.sqlconnect);
-                con.SqlQuery("dbo.add_person");
-                con.Cmd.CommandType = CommandType.StoredProcedure;
-                con.Cmd.Parameters.AddWithValue("@first_name", textBox1.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@last_name", textBox2.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@gender", textBox3.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@band_name", textBox4.Text.Trim());
-                con.NonQueryEx();
-                MessageBox.Show("Success!");
+                Query = String.Format("USE music; DECLARE @Response NVARCHAR(250);" +
+                    "EXEC add_person @first_name='{0}',@last_name='{1}',@band_name='{2}',@gender='{3}',@pUserID={4}, @Response=@Response OUTPUT;" +
+                    "SELECT @Response as N'@Response'", textBox1.Text.Trim(), textBox2.Text.Trim(), textBox3.Text.Trim(), textBox4.Text.Trim(),Globals.UserID);
+                string Response = con.QueryWithResult(Query);
+                MessageBox.Show(Response);
                 textBox1.Text = String.Empty;
                 textBox2.Text = String.Empty;
                 textBox3.Text = String.Empty;
