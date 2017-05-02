@@ -14,6 +14,7 @@ namespace MusicCatalogue
     public partial class Add_band : Form
     {
         private Database con;
+        public string Query;
         public Add_band()
         {
             InitializeComponent();
@@ -24,12 +25,11 @@ namespace MusicCatalogue
             try
             {
                 con = new Database(Settings1.Default.sqlconnect);
-                con.SqlQuery("dbo.add_band");
-                con.Cmd.CommandType = CommandType.StoredProcedure;
-                con.Cmd.Parameters.AddWithValue("@band_name", textBox1.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@country_name", textBox2.Text.Trim());
-                con.NonQueryEx();
-                MessageBox.Show("Success!");
+                Query = String.Format("USE music; DECLARE @Response NVARCHAR(250);" +
+                    "EXEC add_band @band_name = '{0}', @country_name = '{1}', @pUserID = '{2}', @Response=@Response OUTPUT;" +
+                    "SELECT @Response as N'@Response'", textBox1.Text.Trim(), textBox2.Text.Trim(), Globals.UserID);
+                string Response = con.QueryWithResult(Query);
+                MessageBox.Show(Response);
                 textBox1.Text = String.Empty;
                 textBox2.Text = String.Empty;
             }

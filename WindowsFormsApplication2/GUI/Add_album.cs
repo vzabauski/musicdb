@@ -14,6 +14,7 @@ namespace MusicCatalogue
     public partial class Add_album : Form
     {
         private Database con;
+        public string Query;
         public Add_album()
         {
             InitializeComponent();
@@ -39,13 +40,11 @@ namespace MusicCatalogue
             try
             {
                 con = new Database(Settings1.Default.sqlconnect);
-                con.SqlQuery("dbo.add_album");
-                con.Cmd.CommandType = CommandType.StoredProcedure;
-                con.Cmd.Parameters.AddWithValue("@album_title", textBox1.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@album_year", textBox2.Text.Trim());
-                con.Cmd.Parameters.AddWithValue("@album_genre", textBox3.Text.Trim());
-                con.NonQueryEx();
-                MessageBox.Show("Success!");
+                Query = String.Format("USE music; DECLARE @Response NVARCHAR(250);" +
+                    "EXEC add_album @album_title = '{0}', @album_year = '{1}', @album_genre = '{2}', @pUserID={3}, @Response=@Response OUTPUT;" +
+                    "SELECT @Response as N'@Response'", textBox1.Text.Trim(),textBox2.Text.Trim(),textBox3.Text.Trim(), Globals.UserID);
+                string Response = con.QueryWithResult(Query);
+                MessageBox.Show(Response);
                 textBox1.Text = String.Empty;
                 textBox2.Text = String.Empty;
                 textBox3.Text = String.Empty;
