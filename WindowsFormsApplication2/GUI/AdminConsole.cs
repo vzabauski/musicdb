@@ -78,7 +78,9 @@ namespace MusicCatalogue
                     label4.Visible = true;
                     label4.Text = "Enter new password again";
                     textBox1.Visible = true;
+                    textBox1.UseSystemPasswordChar = true;
                     textBox2.Visible = true;
+                    textBox2.UseSystemPasswordChar = true;
                     break;
                 case 1:
                     listBox1.SelectedIndex = 0;
